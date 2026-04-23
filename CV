@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Amit Singh | RAFM Specialist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #0a192f;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    header p {
+      margin-top: 10px;
+      color: #ccd6f6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .section {
+      margin-bottom: 30px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      border-bottom: 2px solid #eee;
+      padding-bottom: 5px;
+      color: #0a192f;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .job {
+      margin-bottom: 20px;
+    }
+
+    .job h3 {
+      margin: 0;
+      color: #1a73e8;
+    }
+
+    .job span {
+      font-size: 14px;
+      color: gray;
+    }
+
+    .skills span {
+      display: inline-block;
+      background: #e3f2fd;
+      color: #0d47a1;
+      padding: 5px 10px;
+      margin: 5px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: gray;
+    }
+
+    a {
+      color: #1a73e8;
+      text-decoration: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<header>
+  <h1>Amit Singh</h1>
+  <p>Senior Revenue Assurance & Fraud Management Specialist</p>
+  <p>Bujumbura, Burundi | 17+ Years Experience</p>
+</header>
+
+<div class="container">
+
+  <div class="section">
+    <h2>Professional Summary</h2>
+    <p>
+      Revenue Assurance & Fraud Management specialist with 17+ years of telecom experience across Africa, Middle East, South Asia, and Southeast Asia. 
+      Expertise in RAFM operations, fraud risk control, regulatory oversight, and large-scale platform implementation.
+      Proven track record of safeguarding multi-million-dollar revenue streams, reducing fraud false positives by ~70%, 
+      and preventing over $2M in annual revenue loss.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Key Skills</h2>
+    <div class="skills">
+      <span>Revenue Assurance</span>
+      <span>Fraud Investigation</span>
+      <span>Mobile Money Risk</span>
+      <span>Audit & Compliance</span>
+      <span>Process Assurance</span>
+      <span>Automation</span>
+      <span>Stakeholder Management</span>
+      <span>Leadership</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Professional Experience</h2>
+
+```
+<div class="job">
+  <h3>Senior RAFM Specialist – Regulatory & Compliance</h3>
+  <span>NP Holding (ARCT), Burundi | May 2023 – Present</span>
+  <ul>
+    <li>Lead revenue assurance reviews across telecom operators</li>
+    <li>Validate billing, interconnect, and mobile money reconciliations</li>
+    <li>Oversee fraud investigations and risk mitigation strategies</li>
+    <li>Support regulatory audits and compliance frameworks</li>
+  </ul>
+</div>
+
+<div class="job">
+  <h3>Associate Solution Architect</h3>
+  <span>Mobileum | Jan 2022 – Apr 2023</span>
+  <ul>
+    <li>Led $5M RAID implementation for African operator</li>
+    <li>Detected ~$10K daily mobile wallet leakage</li>
+    <li>Designed RAFM reconciliation controls</li>
+  </ul>
+</div>
+
+<div class="job">
+  <h3>Manager – Risk</h3>
+  <span>HDFC Bank | May 2021 – Dec 2021</span>
+  <ul>
+    <li>Managed fraud compliance and risk analysis</li>
+    <li>Conducted audits and regulatory reporting</li>
+  </ul>
+</div>
+
+<div class="job">
+  <h3>Senior Consultant</h3>
+  <span>Protiviti | Oct 2018 – May 2021</span>
+  <ul>
+    <li>Handled fraud risk for MTN & Rakuten</li>
+    <li>Improved fraud detection accuracy using AI-based tuning</li>
+  </ul>
+</div>
+
+<div class="job">
+  <h3>Specialist – Fraud Risk</h3>
+  <span>Vodafone India | Sep 2010 – Oct 2018</span>
+  <ul>
+    <li>Prevented $2M annual revenue fraud</li>
+    <li>Reduced false positives by ~70%</li>
+  </ul>
+</div>
+```
+
+  </div>
+
+  <div class="section">
+    <h2>Education</h2>
+    <p>Bachelor of Arts (Economics) – University of Rajasthan</p>
+    <p>PGDBA – Symbiosis, Pune</p>
+  </div>
+
+  <div class="section">
+    <h2>Tools & Technologies</h2>
+    <ul>
+      <li>RAID (Mobileum), Subex ROC-FM, Mavenir FM</li>
+      <li>Amdocs, CRM, BSS, Power BI</li>
+      <li>Fraud Analytics, AI Detection, Pattern Analysis</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Contact</h2>
+    <p>
+      LinkedIn: 
+      <a href="https://www.linkedin.com/in/amit-singh0203" target="_blank">
+        linkedin.com/in/amit-singh0203
+      </a>
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Amit Singh
+</footer>
+
+</body>
+</html>
