@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Amit's Website</title>
+</head>
+<body>
+  <h1>Hello, I'm Amit 👋</h1>
+  <p>Welcome to my website!</p>
+
+  <h2>About Me</h2>
+  <p>I am learning how to build websites using GitHub.</p>
+
+  <h2>Contact</h2>
+  <p>Email: amit.singh0203@email.com</p>
+</body>
+</html>
