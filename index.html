@@ -2,991 +2,1067 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Amit Singh | RAFM & Fraud Risk Consulting</title>
+  <title>Amit Singh | RAFM & Fraud Risk Leader</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #07090f;
-      --surface: #0e1117;
-      --surface2: #141922;
-      --border: rgba(255,255,255,0.06);
-      --accent: #e8a045;
-      --accent2: #4a9eff;
-      --text: #e8edf5;
-      --muted: #7a8799;
-      --gold: #d4a93a;
+      --bg: #030507;
+      --surface: #090d13;
+      --surface2: #0f1520;
+      --surface3: #141c2a;
+      --border: rgba(100,180,255,0.07);
+      --border2: rgba(100,180,255,0.14);
+      --gold: #c9a227;
+      --gold2: #e8c252;
+      --blue: #3b82f6;
+      --blue2: #60a5fa;
+      --teal: #0ea5e9;
+      --text: #dce8f5;
+      --muted: #5a7a99;
+      --muted2: #8aa5c0;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Syne', sans-serif;
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
-      line-height: 1.7;
+      line-height: 1.6;
     }
 
-    /* ── NOISE TEXTURE OVERLAY ── */
+    /* GRAIN */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999; opacity: 0.5;
+    }
+
+    /* GRID BG */
     body::before {
       content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 1000;
-      opacity: 0.4;
-    }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 80px 24px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(232,160,69,0.12) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 80% at 80% 120%, rgba(74,158,255,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 40% at 10% 80%, rgba(212,169,58,0.06) 0%, transparent 50%);
-    }
-
-    .hero-lines {
-      position: absolute;
-      inset: 0;
+      position: fixed; inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-      background-size: 60px 60px;
+        linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
     }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid rgba(232,160,69,0.3);
-      background: rgba(232,160,69,0.07);
-      color: var(--accent);
-      padding: 6px 16px;
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-      animation: fadeUp 0.6s ease both;
-    }
-
-    .hero-badge::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.4); }
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(48px, 8vw, 96px);
-      font-weight: 900;
-      line-height: 1.0;
-      letter-spacing: -0.02em;
-      animation: fadeUp 0.7s 0.1s ease both;
-      position: relative;
-    }
-
-    .hero h1 .name-accent {
-      color: transparent;
-      -webkit-text-stroke: 1px var(--accent);
-    }
-
-    .hero-sub {
-      font-size: clamp(14px, 2vw, 18px);
-      color: var(--muted);
-      margin-top: 16px;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      animation: fadeUp 0.7s 0.2s ease both;
-    }
-
-    .hero-meta {
-      display: flex;
-      gap: 24px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 16px;
-      animation: fadeUp 0.7s 0.3s ease both;
-    }
-
-    .hero-meta span {
-      font-size: 13px;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-meta span::before {
-      content: '◆';
-      color: var(--accent);
-      font-size: 8px;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 12px;
-      margin-top: 40px;
-      flex-wrap: wrap;
-      justify-content: center;
-      animation: fadeUp 0.7s 0.4s ease both;
-    }
-
-    .btn {
-      padding: 13px 28px;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      letter-spacing: 0.02em;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #000;
-      border: 1px solid var(--accent);
-    }
-
-    .btn-primary:hover {
-      background: #f0b055;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(232,160,69,0.3);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(4px);
-    }
-
-    .btn-outline:hover {
-      border-color: rgba(255,255,255,0.2);
-      background: rgba(255,255,255,0.04);
-      transform: translateY(-2px);
-    }
-
-    /* ── STATS BAR ── */
-    .stats-bar {
-      border-top: 1px solid var(--border);
+    /* ────── NAV ────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+      background: rgba(3,5,7,0.85);
+      backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
-      background: var(--surface);
-      padding: 28px 24px;
     }
 
-    .stats-inner {
-      max-width: 900px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-    }
-
-    .stat {
-      text-align: center;
-      padding: 12px;
-      border-right: 1px solid var(--border);
-    }
-
-    .stat:last-child { border-right: none; }
-
-    .stat-value {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 6px;
-      text-transform: uppercase;
+    .nav-logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      color: var(--gold);
       letter-spacing: 0.08em;
     }
 
-    /* ── SECTIONS ── */
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 0 24px;
+    .nav-links {
+      display: flex; gap: 32px; list-style: none;
     }
 
-    section {
-      padding: 80px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .section-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
+    .nav-links a {
+      font-size: 13px; font-weight: 600;
+      color: var(--muted2);
+      text-decoration: none;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 12px;
+      transition: color 0.2s;
     }
 
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 4vw, 42px);
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 40px;
-    }
+    .nav-links a:hover { color: var(--text); }
 
-    /* ── PROFILE ── */
-    .profile-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 48px;
-      align-items: start;
-    }
-
-    .profile-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 32px;
-      position: sticky;
-      top: 24px;
-    }
-
-    .profile-initials {
-      width: 72px;
-      height: 72px;
-      background: linear-gradient(135deg, var(--accent), var(--gold));
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      font-weight: 700;
+    .nav-cta {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--gold);
       color: #000;
-      margin-bottom: 20px;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 8px 20px;
+      border-radius: 4px;
+      transition: all 0.2s;
     }
 
-    .profile-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      margin-bottom: 4px;
-    }
+    .nav-cta:hover { background: var(--gold2); transform: translateY(-1px); }
 
-    .profile-card .role {
-      color: var(--accent);
-      font-size: 13px;
-      font-weight: 500;
-      margin-bottom: 20px;
-    }
-
-    .profile-detail {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      border-top: 1px solid var(--border);
-      padding-top: 20px;
-    }
-
-    .profile-detail-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-    }
-
-    .profile-detail-row .key { color: var(--muted); }
-    .profile-detail-row .val { color: var(--text); font-weight: 500; }
-
-    .profile-bio p {
-      color: #bbc6d4;
-      font-size: 16px;
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-
-    .profile-bio strong { color: var(--accent); font-weight: 600; }
-
-    /* ── IMPACT CARDS ── */
-    .impact-grid {
+    /* ────── HERO ────── */
+    .hero {
+      min-height: 100vh;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    .impact-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 24px;
-      transition: border-color 0.2s, transform 0.2s;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 100px 80px 60px;
+      gap: 60px;
       position: relative;
       overflow: hidden;
     }
 
-    .impact-card::before {
-      content: '';
+    .hero-glow {
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), transparent);
-      opacity: 0;
-      transition: opacity 0.2s;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%);
+      top: -200px; right: -200px;
+      pointer-events: none;
     }
 
-    .impact-card:hover {
-      border-color: rgba(232,160,69,0.25);
-      transform: translateY(-3px);
-    }
-
-    .impact-card:hover::before { opacity: 1; }
-
-    .impact-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 36px;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-
-    .impact-desc {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    /* ── EXPERIENCE TIMELINE ── */
-    .timeline { position: relative; padding-left: 28px; }
-
-    .timeline::before {
-      content: '';
+    .hero-glow2 {
       position: absolute;
-      left: 0;
-      top: 8px;
-      bottom: 8px;
-      width: 1px;
-      background: linear-gradient(to bottom, var(--accent), transparent);
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(201,162,39,0.06) 0%, transparent 70%);
+      bottom: 0; left: -100px;
+      pointer-events: none;
     }
 
-    .timeline-item {
-      position: relative;
-      margin-bottom: 40px;
-      animation: fadeUp 0.5s ease both;
+    .hero-left { position: relative; z-index: 1; }
+
+    .hero-chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(201,162,39,0.08);
+      border: 1px solid rgba(201,162,39,0.25);
+      color: var(--gold2);
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      padding: 6px 14px;
+      border-radius: 2px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
     }
 
-    .timeline-item::before {
+    .hero-chip::before {
       content: '';
-      position: absolute;
-      left: -33px;
-      top: 8px;
-      width: 10px;
-      height: 10px;
-      background: var(--accent);
+      width: 6px; height: 6px;
+      background: var(--gold);
       border-radius: 50%;
-      border: 2px solid var(--bg);
-      box-shadow: 0 0 0 2px var(--accent);
+      animation: blink 2s infinite;
     }
 
-    .timeline-meta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
+    @keyframes blink {
+      0%,100% { opacity:1; } 50% { opacity:0.2; }
+    }
+
+    .hero-name {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(52px, 5.5vw, 80px);
+      font-weight: 400;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
       margin-bottom: 8px;
     }
 
-    .timeline-company {
-      font-size: 12px;
-      color: var(--muted);
-      background: var(--surface2);
-      padding: 3px 10px;
-      border-radius: 100px;
-      border: 1px solid var(--border);
+    .hero-name em {
+      font-style: italic;
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--gold);
     }
 
-    .timeline-period {
-      font-size: 12px;
-      color: var(--muted);
+    .hero-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      color: var(--teal);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
     }
 
-    .timeline-role {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
+    .hero-desc {
+      font-size: 16px;
+      color: var(--muted2);
+      line-height: 1.8;
+      max-width: 500px;
+      margin-bottom: 36px;
+    }
+
+    .hero-desc strong { color: var(--gold2); font-weight: 600; }
+
+    .hero-actions {
+      display: flex; gap: 12px; flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold);
+      color: #000;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 13px 26px;
+      border-radius: 4px;
+      transition: all 0.2s;
+      border: none; cursor: pointer;
+    }
+
+    .btn-gold:hover { background: var(--gold2); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,162,39,0.25); }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent;
       color: var(--text);
-      margin-bottom: 12px;
+      font-size: 13px; font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 13px 26px;
+      border-radius: 4px;
+      border: 1px solid var(--border2);
+      transition: all 0.2s; cursor: pointer;
     }
 
-    .timeline-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+    .btn-ghost:hover { border-color: rgba(100,180,255,0.3); background: rgba(59,130,246,0.06); transform: translateY(-2px); }
+
+    /* HERO RIGHT — rotating metrics */
+    .hero-right {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; gap: 16px;
     }
 
-    .timeline-list li {
-      font-size: 14px;
-      color: #a0aab8;
-      display: flex;
-      gap: 10px;
-      align-items: baseline;
+    .metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 22px 28px;
+      display: flex; align-items: center; gap: 20px;
+      transition: border-color 0.3s, transform 0.3s;
+      animation: slideIn 0.6s ease both;
     }
 
-    .timeline-list li::before {
-      content: '→';
-      color: var(--accent);
-      flex-shrink: 0;
+    .metric-card:hover { border-color: var(--border2); transform: translateX(-4px); }
+
+    .metric-card:nth-child(2) { animation-delay: 0.1s; margin-left: 24px; }
+    .metric-card:nth-child(3) { animation-delay: 0.2s; }
+    .metric-card:nth-child(4) { animation-delay: 0.3s; margin-left: 24px; }
+
+    @keyframes slideIn {
+      from { opacity:0; transform: translateX(30px); }
+      to { opacity:1; transform: translateX(0); }
+    }
+
+    .metric-icon {
+      width: 44px; height: 44px;
+      background: rgba(201,162,39,0.1);
+      border: 1px solid rgba(201,162,39,0.2);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+
+    .metric-val {
+      font-family: 'Instrument Serif', serif;
+      font-size: 28px;
+      color: var(--gold2);
+      line-height: 1;
+    }
+
+    .metric-lab {
       font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+      letter-spacing: 0.04em;
     }
 
-    /* ── CASE STUDIES ── */
-    .case-grid {
+    /* ────── DIVIDER ────── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border2), transparent);
+    }
+
+    /* ────── SECTIONS ────── */
+    .section {
+      padding: 80px;
+      border-bottom: 1px solid var(--border);
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+
+    .section-h {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(32px, 3vw, 48px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 48px;
+    }
+
+    .section-h em { font-style: italic; color: var(--gold); }
+
+    /* ────── ABOUT ────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 16px;
+      color: var(--muted2);
+      line-height: 1.9;
+      margin-bottom: 18px;
+    }
+
+    .about-text strong { color: var(--gold2); }
+
+    .about-text blockquote {
+      border-left: 3px solid var(--gold);
+      padding: 16px 20px;
+      margin: 28px 0;
+      background: rgba(201,162,39,0.04);
+      border-radius: 0 6px 6px 0;
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .about-sidebar { display: flex; flex-direction: column; gap: 14px; }
+
+    .info-row {
+      display: flex;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .info-key {
+      background: var(--surface2);
+      padding: 12px 16px;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      min-width: 130px;
+      display: flex; align-items: center;
+    }
+
+    .info-val {
+      padding: 12px 16px;
+      font-size: 14px;
+      color: var(--text);
+      display: flex; align-items: center;
+    }
+
+    .info-val a { color: var(--blue2); text-decoration: none; }
+    .info-val a:hover { text-decoration: underline; }
+
+    /* ────── EXPERIENCE ────── */
+    .exp-list { display: flex; flex-direction: column; gap: 0; }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      padding: 36px 0;
+      transition: background 0.2s;
+    }
+
+    .exp-item:hover { background: rgba(59,130,246,0.02); }
+    .exp-item:first-child { padding-top: 0; }
+    .exp-item:last-child { border-bottom: none; }
+
+    .exp-left {}
+
+    .exp-period {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+
+    .exp-company {
+      font-size: 13px;
+      color: var(--blue2);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .exp-loc {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .exp-right { padding-left: 36px; border-left: 1px solid var(--border); }
+
+    .exp-role {
+      font-family: 'Instrument Serif', serif;
+      font-size: 22px;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+
+    .exp-bullets li {
+      font-size: 14px;
+      color: var(--muted2);
+      display: flex; gap: 10px;
+      align-items: baseline;
+      line-height: 1.6;
+    }
+
+    .exp-bullets li::before {
+      content: '▸';
+      color: var(--gold);
+      font-size: 11px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .exp-bullets li strong { color: var(--gold2); }
+
+    /* ────── PROJECTS ────── */
+    .projects-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
 
-    .case-card {
+    .project-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px;
-      transition: all 0.2s ease;
+      border-radius: 10px;
+      padding: 30px;
       position: relative;
       overflow: hidden;
+      transition: all 0.25s;
+      cursor: default;
     }
 
-    .case-card::after {
+    .project-card::before {
       content: '';
-      position: absolute;
-      bottom: 0; right: 0;
-      width: 80px; height: 80px;
-      background: radial-gradient(circle, rgba(232,160,69,0.08), transparent 70%);
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--teal), transparent);
+      opacity: 0;
+      transition: opacity 0.25s;
     }
 
-    .case-card:hover {
-      border-color: rgba(74,158,255,0.2);
+    .project-card:hover {
+      border-color: var(--border2);
       transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
     }
 
-    .case-tag {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
+    .project-card:hover::before { opacity: 1; }
+
+    .project-region {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--accent2);
-      margin-bottom: 12px;
+      color: var(--teal);
+      margin-bottom: 10px;
     }
 
-    .case-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      margin-bottom: 12px;
-      line-height: 1.3;
+    .project-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 22px;
+      line-height: 1.2;
+      margin-bottom: 10px;
     }
 
-    .case-card p {
+    .project-desc {
       font-size: 14px;
-      color: #8a96a8;
-      line-height: 1.6;
+      color: var(--muted2);
+      line-height: 1.7;
+      margin-bottom: 20px;
     }
 
-    /* ── SKILLS ── */
-    .skills-columns {
+    .project-result {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(201,162,39,0.08);
+      border: 1px solid rgba(201,162,39,0.2);
+      color: var(--gold2);
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      padding: 6px 12px;
+      border-radius: 4px;
+      letter-spacing: 0.06em;
+    }
+
+    /* ────── SKILLS ────── */
+    .skills-outer {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
-    .skill-group {
+    .skill-block {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 8px;
       padding: 24px;
     }
 
-    .skill-group-title {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
+    .skill-block-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--gold);
       margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
     }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
 
     .skill-tag {
-      display: inline-block;
       background: var(--surface2);
       border: 1px solid var(--border);
-      color: #b8c4d4;
-      font-size: 13px;
-      padding: 6px 12px;
-      border-radius: 6px;
-      margin: 4px 4px 0 0;
-      transition: border-color 0.2s;
+      color: var(--muted2);
+      font-size: 12px;
+      padding: 5px 11px;
+      border-radius: 4px;
+      transition: all 0.15s;
     }
 
-    .skill-tag:hover {
-      border-color: rgba(232,160,69,0.3);
-      color: var(--accent);
+    .skill-tag:hover { border-color: rgba(201,162,39,0.3); color: var(--gold2); }
+
+    /* PLATFORMS */
+    .platforms-row {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px;
     }
 
-    /* ── TOOLS ── */
-    .tools-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 8px;
-    }
-
-    .tool-chip {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 13px;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-weight: 500;
-    }
-
-    /* ── EDUCATION ── */
-    .edu-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .edu-card {
+    .platform-pill {
+      display: flex; align-items: center; gap: 8px;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 24px;
+      color: var(--muted2);
+      font-size: 13px; font-weight: 500;
+      padding: 10px 18px;
+      border-radius: 6px;
+      transition: all 0.15s;
     }
 
-    .edu-degree {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      margin-bottom: 6px;
+    .platform-pill::before {
+      content: '⬡';
+      color: var(--gold);
+      font-size: 12px;
     }
 
-    .edu-school {
-      font-size: 14px;
-      color: var(--muted);
-    }
+    .platform-pill:hover { border-color: var(--border2); color: var(--text); }
 
-    /* ── CONTACT ── */
+    /* ────── CONTACT ────── */
     .contact-section {
+      padding: 80px;
       text-align: center;
-      padding: 80px 24px;
-    }
-
-    .contact-section .section-title { margin-bottom: 16px; }
-
-    .contact-sub {
-      color: var(--muted);
-      font-size: 16px;
-      max-width: 480px;
-      margin: 0 auto 40px;
-    }
-
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    /* ── CV DOWNLOAD ── */
-    #cv-download-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    #cv-download-btn svg {
-      width: 16px; height: 16px;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 32px 24px;
-      color: var(--muted);
-      font-size: 13px;
+      background: var(--surface);
       border-top: 1px solid var(--border);
     }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .contact-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(36px, 4vw, 56px);
+      margin-bottom: 16px;
     }
 
-    .fade-in {
+    .contact-title em { font-style: italic; color: var(--gold); }
+
+    .contact-sub {
+      font-size: 16px;
+      color: var(--muted2);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .contact-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    .contact-detail {
+      display: flex; justify-content: center; gap: 32px;
+      margin-top: 40px; flex-wrap: wrap;
+    }
+
+    .contact-item {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .contact-item span { color: var(--muted2); }
+
+    /* ────── FOOTER ────── */
+    footer {
+      text-align: center;
+      padding: 24px 40px;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ────── ANIMATIONS ────── */
+    .reveal {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.shown { opacity: 1; transform: translateY(0); }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .stat:nth-child(2) { border-right: none; }
-      .profile-grid { grid-template-columns: 1fr; }
-      .profile-card { position: static; }
-      .impact-grid { grid-template-columns: 1fr; }
-      .case-grid { grid-template-columns: 1fr; }
-      .skills-columns { grid-template-columns: 1fr; }
-      .edu-grid { grid-template-columns: 1fr; }
+    /* ────── RESPONSIVE ────── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding: 100px 32px 60px; gap: 40px; }
+      .hero-right { display: grid; grid-template-columns: 1fr 1fr; }
+      .metric-card:nth-child(2),
+      .metric-card:nth-child(4) { margin-left: 0; }
+      .section { padding: 60px 32px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .exp-item { grid-template-columns: 1fr; }
+      .exp-right { padding-left: 0; border-left: none; border-top: 1px solid var(--border); padding-top: 20px; margin-top: 12px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .skills-outer { grid-template-columns: 1fr; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .contact-section { padding: 60px 32px; }
     }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">AMIT.SINGH // RAFM</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://www.linkedin.com/in/amit-singh0203" target="_blank" class="nav-cta">
+    ↗ Connect
+  </a>
+</nav>
+
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-lines"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
 
-  <div class="hero-badge">Available for Consulting Engagements</div>
-
-  <h1>Amit <span class="name-accent">Singh</span></h1>
-
-  <p class="hero-sub">Revenue Assurance & Fraud Risk Management Consultant</p>
-
-  <div class="hero-meta">
-    <span>17+ Years Experience</span>
-    <span>Africa · Middle East · Asia</span>
-    <span>Telecom · Fintech · Regulatory</span>
+  <div class="hero-left">
+    <div class="hero-chip">Available for Global Engagements</div>
+    <h1 class="hero-name">Amit<br><em>Singh</em></h1>
+    <div class="hero-title">// Revenue Assurance &amp; Fraud Risk Leader</div>
+    <p class="hero-desc">
+      17 years. 10+ countries. Three sides of the same problem — <strong>operator, vendor, and national regulator</strong>. I've led RAFM programs that protected an estimated <strong>$15M+ in revenue</strong> across telecom, fintech, and mobile money ecosystems in Africa, the Middle East, and Asia.
+    </p>
+    <div class="hero-actions">
+      <a href="https://www.linkedin.com/in/amit-singh0203" target="_blank" class="btn-gold">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0H5a5 5 0 00-5 5v14a5 5 0 005 5h14a5 5 0 005-5V5a5 5 0 00-5-5zm-11 19H5V8h3v11zM6.5 6.73a1.77 1.77 0 110-3.54 1.77 1.77 0 010 3.54zM20 19h-3v-5.6c0-3.37-4-3.11-4 0V19h-3V8h3v1.77C14.4 7.14 20 6.96 20 12.29V19z"/></svg>
+        View LinkedIn
+      </a>
+      <button class="btn-ghost" onclick="downloadCV()">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
+        Download CV
+      </button>
+    </div>
   </div>
 
-  <div class="hero-cta">
-    <a href="https://www.linkedin.com/in/amit-singh0203" target="_blank" class="btn btn-outline">LinkedIn Profile</a>
-    <a href="#" id="cv-download-btn" class="btn btn-primary" download>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
-      Download CV
-    </a>
+  <div class="hero-right">
+    <div class="metric-card">
+      <div class="metric-icon">🛡️</div>
+      <div>
+        <div class="metric-val">$15M+</div>
+        <div class="metric-lab">Estimated fraud &amp; leakage prevented</div>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon">📍</div>
+      <div>
+        <div class="metric-val">10+</div>
+        <div class="metric-lab">Countries across Africa, ME &amp; Asia</div>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon">⚙️</div>
+      <div>
+        <div class="metric-val">70%</div>
+        <div class="metric-lab">False positive reduction at Vodafone India</div>
+      </div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-icon">🏗️</div>
+      <div>
+        <div class="metric-val">$5M</div>
+        <div class="metric-lab">RAID platform delivered end-to-end</div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="stat">
-      <div class="stat-value">17+</div>
-      <div class="stat-label">Years Experience</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value">$2M+</div>
-      <div class="stat-label">Annual Fraud Prevented</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value">70%</div>
-      <div class="stat-label">False Positive Reduction</div>
-    </div>
-    <div class="stat">
-      <div class="stat-value">$5M</div>
-      <div class="stat-label">Platform Implementations</div>
-    </div>
-  </div>
-</div>
+<!-- ABOUT -->
+<section class="section reveal" id="about">
+  <div class="section-tag">// 01 — About</div>
+  <h2 class="section-h">Protecting Revenue.<br><em>Strategically.</em></h2>
 
-<!-- EXECUTIVE PROFILE -->
-<section>
-  <div class="container">
-    <div class="profile-grid fade-in">
-      <div class="profile-card">
-        <div class="profile-initials">AS</div>
-        <h3>Amit Singh</h3>
-        <div class="role">Senior RAFM & Fraud Risk Consultant</div>
-        <div class="profile-detail">
-          <div class="profile-detail-row">
-            <span class="key">Experience</span>
-            <span class="val">17+ Years</span>
-          </div>
-          <div class="profile-detail-row">
-            <span class="key">Region</span>
-            <span class="val">Africa, ME, Asia</span>
-          </div>
-          <div class="profile-detail-row">
-            <span class="key">Sectors</span>
-            <span class="val">Telecom · Fintech</span>
-          </div>
-          <div class="profile-detail-row">
-            <span class="key">LinkedIn</span>
-            <a href="https://www.linkedin.com/in/amit-singh0203" target="_blank" class="val" style="color:var(--accent2)">amit-singh0203</a>
-          </div>
-        </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <blockquote>
+        "Most RAFM professionals have seen the problem from one side. I have led it from all three — operator, vendor, and national regulator."
+      </blockquote>
+      <p>
+        My career spans 17 years and three distinct vantage points: building RAFM functions inside a Tier-1 operator (<strong>Vodafone India</strong>), architecting and delivering platforms as a global vendor (<strong>Mobileum</strong>), and now leading national-level compliance and fraud programs as a <strong>Senior RAFM Specialist for Burundi's national telecom regulator</strong>.
+      </p>
+      <p>
+        Each perspective changed how I see the problem. Together, they make me unusually effective — I understand what operators hide, what vendors over-promise, and what regulators actually need.
+      </p>
+      <p>
+        My programs have spanned <strong>GSM voice, roaming, VAS, interconnect, mobile money, AML/KYC, and digital payment fraud</strong> — covering the full revenue and fraud surface of modern telecom and fintech ecosystems across Africa, the Middle East, South Asia, and Southeast Asia.
+      </p>
+    </div>
+
+    <div class="about-sidebar">
+      <div class="info-row">
+        <div class="info-key">Location</div>
+        <div class="info-val">Bujumbura, Burundi 🌍</div>
       </div>
-
-      <div class="profile-bio">
-        <div class="section-label">Executive Profile</div>
-        <div class="section-title">Protecting Revenue.<br>Eliminating Fraud.</div>
-        <p>
-          Senior <strong>RAFM & Fraud Risk Consultant</strong> with 17+ years of global telecom experience across Africa, Middle East, and Asia. Specialised in protecting multi-million-dollar revenue streams through advanced reconciliation, fraud detection, and regulatory compliance.
-        </p>
-        <p>
-          Delivered measurable impact including <strong>$2M+ fraud prevention annually</strong>, <strong>70% reduction in false positives</strong>, and leadership of <strong>$5M RAFM platform implementations</strong>.
-        </p>
-
-        <!-- IMPACT STATS -->
-        <div class="impact-grid" style="margin-top:28px;">
-          <div class="impact-card">
-            <div class="impact-num">$2M+</div>
-            <div class="impact-desc">Annual revenue leakage prevented across telecom networks</div>
-          </div>
-          <div class="impact-card">
-            <div class="impact-num">~70%</div>
-            <div class="impact-desc">Reduction in fraud false positives through AI-driven controls</div>
-          </div>
-          <div class="impact-card">
-            <div class="impact-num">$5M</div>
-            <div class="impact-desc">RAID platform implementation — detecting ~$10K/day leakage</div>
-          </div>
-          <div class="impact-card">
-            <div class="impact-num">Multi-Op</div>
-            <div class="impact-desc">Regulatory RAFM audits across multiple operators</div>
-          </div>
-        </div>
+      <div class="info-row">
+        <div class="info-key">Experience</div>
+        <div class="info-val">17+ Years</div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">Sectors</div>
+        <div class="info-val">Telecom · Fintech · Regulatory</div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">Regions</div>
+        <div class="info-val">Africa · ME · South Asia · SEA</div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">LinkedIn</div>
+        <div class="info-val"><a href="https://www.linkedin.com/in/amit-singh0203" target="_blank">amit-singh0203 ↗</a></div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">Email</div>
+        <div class="info-val"><a href="mailto:amit.singh0203@gmail.com">amit.singh0203@gmail.com</a></div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">Phone</div>
+        <div class="info-val">+91 9099980442</div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">Availability</div>
+        <div class="info-val" style="color: #4ade80">✓ Open to Global Roles</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- EXPERIENCE -->
-<section>
-  <div class="container fade-in">
-    <div class="section-label">Career History</div>
-    <div class="section-title">Consulting Experience</div>
+<section class="section reveal" id="experience">
+  <div class="section-tag">// 02 — Career</div>
+  <h2 class="section-h">Professional <em>Experience</em></h2>
 
-    <div class="timeline">
+  <div class="exp-list">
 
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <span class="timeline-company">Burundi Telecom Regulator</span>
-          <span class="timeline-period">2023 – Present</span>
-        </div>
-        <div class="timeline-role">Senior RAFM Specialist – Regulatory</div>
-        <ul class="timeline-list">
-          <li>Lead operator-wide RAFM audits and compliance programs</li>
-          <li>Validate interconnect and billing systems for regulatory accuracy</li>
-          <li>Drive fraud risk mitigation strategies across multiple operators</li>
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">May 2023 – Present</div>
+        <div class="exp-company">NP Holding (ARCT)</div>
+        <div class="exp-loc">Bujumbura, Burundi</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Senior RAFM Specialist — Regulatory &amp; Compliance</div>
+        <ul class="exp-bullets">
+          <li>Lead regulatory compliance and assurance strategy across all licensed telecom operators and mobile money entities in Burundi</li>
+          <li>Serve as principal liaison between the national regulatory authority and operator C-suite leadership — managing compliance audits, enforcement actions, and dispute resolution</li>
+          <li>Design risk assessment frameworks and governance KPIs enabling <strong>CXO &amp; board-level decision-making</strong> on fraud exposure and compliance posture</li>
+          <li>Lead AML alignment, KYC compliance, and digital payment fraud programs contributing to an estimated <strong>$3M+ in protected annual operator revenue</strong></li>
+          <li>Full budget ownership of <strong>$500K+ operational budget</strong> and leadership of cross-functional team of 8+ analysts, auditors, and compliance officers</li>
         </ul>
       </div>
+    </div>
 
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <span class="timeline-company">Mobileum</span>
-          <span class="timeline-period">2022 – 2023</span>
-        </div>
-        <div class="timeline-role">Solution Architect (RAFM)</div>
-        <ul class="timeline-list">
-          <li>Delivered $5M RAID platform implementation end-to-end</li>
-          <li>Designed real-time fraud detection controls and reconciliation engines</li>
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">Jan 2022 – Apr 2023</div>
+        <div class="exp-company">Mobileum Technology</div>
+        <div class="exp-loc">Bangalore, India</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Associate Solution Architect</div>
+        <ul class="exp-bullets">
+          <li>Led a <strong>$5M end-to-end RAID platform implementation</strong> for a major African operator — enabling real-time detection of ~$10K/day in mobile wallet leakage</li>
+          <li>Designed comprehensive solution architectures across a complex multi-stakeholder environment from business case through production stabilization</li>
+          <li>Managed commercial delivery including revenue forecasting, invoicing, and strategic partner coordination ensuring contractual and financial integrity</li>
         </ul>
       </div>
+    </div>
 
-      <div class="timeline-item">
-        <div class="timeline-meta">
-          <span class="timeline-company">MTN · Rakuten & Others</span>
-          <span class="timeline-period">2018 – 2021</span>
-        </div>
-        <div class="timeline-role">Senior Consultant</div>
-        <ul class="timeline-list">
-          <li>Led fraud management programs for MTN and Rakuten globally</li>
-          <li>Delivered AI-driven fraud detection insights reducing losses by $2M annually</li>
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">May 2021 – Dec 2021</div>
+        <div class="exp-company">HDFC Bank</div>
+        <div class="exp-loc">Patna, India</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Manager — Risk</div>
+        <ul class="exp-bullets">
+          <li>Ensured compliance with fraud management regulations and RBI guidelines across banking processes</li>
+          <li>Conducted fraud trend analysis delivering management-level risk intelligence to executive risk governance</li>
+          <li>Mentored team on fraud detection techniques embedding a compliance-first culture</li>
         </ul>
       </div>
+    </div>
 
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">Oct 2018 – May 2021</div>
+        <div class="exp-company">Protiviti India</div>
+        <div class="exp-loc">Gurgaon, India</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Senior Consultant — Fraud Management</div>
+        <ul class="exp-bullets">
+          <li>Headed fraud management consulting for <strong>MTN South Africa and Rakuten Japan</strong> — leading a 5-person team at Director and CTO engagement level</li>
+          <li>Delivered AI-aligned fraud rule tuning and Subex ROC-FM optimization, <strong>reducing false positive rates by 40%+</strong></li>
+          <li>Designed predictive fraud indicators and board-level assurance reports preventing an estimated <strong>$5M+ in annual fraud exposure</strong></li>
+          <li>Embedded AML-aligned controls and KYC risk frameworks across Africa and Japan</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">Sep 2010 – Oct 2018</div>
+        <div class="exp-company">Vodafone India</div>
+        <div class="exp-loc">Ahmedabad, India</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Specialist — Fraud Risk &amp; Security</div>
+        <ul class="exp-bullets">
+          <li>Led end-to-end fraud investigations as functional team lead — covering SIM box, prepaid arbitrage, bonus abuse, dealer fraud, and zero-rating misuse</li>
+          <li>Optimized 100+ RAFM controls, <strong>reducing false positives by ~70%</strong> and recovering <strong>3,000+ investigator hours annually</strong></li>
+          <li>Neutralized SIM Box bypass fraud <strong>preventing $2M+ in annual revenue bypass</strong> (~5% of regional revenue)</li>
+          <li>Delivered cumulative fraud prevention estimated at <strong>$10M+ over 8 years</strong> across bypass, leakage, and bonus abuse controls</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section reveal" id="projects">
+  <div class="section-tag">// 03 — Highlights</div>
+  <h2 class="section-h">Key Programs &amp; <em>Transformations</em></h2>
+
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-region">Platform Deployment · Africa</div>
+      <div class="project-title">RAID Implementation — Orange African OpCos</div>
+      <p class="project-desc">Led end-to-end delivery of a $5M AI-ready RAID (WeDo/Mobileum) platform for a major African operator. Established real-time mobile wallet leakage detection from business case to full production stabilization.</p>
+      <div class="project-result">⚡ ~$10,000/day leakage surfaced</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-region">Fraud Detection · India</div>
+      <div class="project-title">Subex ROC-FM &amp; FMS Migration — Vodafone India</div>
+      <p class="project-desc">Full fraud management system migration with AI-aligned rule optimization. Systematic redesign of 100+ detection controls, dramatically improving detection quality and operational efficiency.</p>
+      <div class="project-result">⚡ 40%+ false positive reduction</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-region">Platform Deployment · Japan</div>
+      <div class="project-title">Mavenir FM (MNSS) — Rakuten Japan</div>
+      <p class="project-desc">Fraud management platform deployment for Japan's leading virtual network operator. Managed at Director/CTO engagement level, embedded within Rakuten's broader digital and fintech ecosystem.</p>
+      <div class="project-result">⚡ CTO-level engagement · Tier-1 VNO</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-region">Regulatory · Burundi</div>
+      <div class="project-title">National Regulatory RAFM Audit Framework</div>
+      <p class="project-desc">Designed and executed comprehensive RAFM compliance audits across all competing operators for Burundi's national telecom regulator. Established independent billing validation, interconnect compliance, and fraud governance standards.</p>
+      <div class="project-result">⚡ $3M+ annual revenue protected</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-region">Fraud Risk · Africa &amp; ME</div>
+      <div class="project-title">MTN South Africa &amp; Zain Bahrain Assessment</div>
+      <p class="project-desc">Cross-operator fraud risk evaluation, control gap analysis, and assurance framework enhancement. Delivered board-level reporting on fraud exposure across Africa and the Middle East for Protiviti's Tier-1 clients.</p>
+      <div class="project-result">⚡ Director-level advisory · Multi-operator</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-region">SIM Box Fraud · India</div>
+      <div class="project-title">SIM Box Bypass Neutralisation — Vodafone Western India</div>
+      <p class="project-desc">Identified and neutralised a large-scale SIM box bypass fraud operation across one of India's highest-risk fraud environments. Detection framework became the repeatable model for future bypass mitigation.</p>
+      <div class="project-result">⚡ $2M+ annual bypass prevented</div>
     </div>
   </div>
 </section>
 
-<!-- CASE STUDIES -->
-<section>
-  <div class="container fade-in">
-    <div class="section-label">Work Highlights</div>
-    <div class="section-title">Selected Case Studies</div>
+<!-- SKILLS -->
+<section class="section reveal" id="skills">
+  <div class="section-tag">// 04 — Expertise</div>
+  <h2 class="section-h">Core Capabilities &amp; <em>Tools</em></h2>
 
-    <div class="case-grid">
-      <div class="case-card">
-        <div class="case-tag">Platform Deployment · Africa</div>
-        <h3>RAID Implementation – Full Lifecycle</h3>
-        <p>Led end-to-end deployment of an RAFM platform for a major African operator, establishing real-time leakage detection that surfaced ~$10,000/day in previously undetected revenue loss.</p>
-      </div>
-      <div class="case-card">
-        <div class="case-tag">Fraud Control · India</div>
-        <h3>SIM Box Bypass Fraud Elimination</h3>
-        <p>Identified and neutralised a large-scale SIM box bypass fraud operation. Detection framework prevented an estimated $2M in annual revenue loss and set a repeatable model for future detection.</p>
-      </div>
-      <div class="case-card">
-        <div class="case-tag">Regulatory · Burundi</div>
-        <h3>Multi-Operator Regulatory Audit</h3>
-        <p>Designed and executed comprehensive RAFM compliance audits across competing operators for a national telecom regulator, establishing independent billing and interconnect validation standards.</p>
-      </div>
-      <div class="case-card">
-        <div class="case-tag">AI & Analytics · Global</div>
-        <h3>AI-Driven Fraud Detection Framework</h3>
-        <p>Deployed machine-learning-assisted fraud detection models for global telecom clients, achieving ~70% reduction in false positives and significantly improving analyst throughput.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS & TOOLS -->
-<section>
-  <div class="container fade-in">
-    <div class="section-label">Expertise</div>
-    <div class="section-title">Core Capabilities & Tools</div>
-
-    <div class="skills-columns">
-      <div class="skill-group">
-        <div class="skill-group-title">Revenue Assurance</div>
+  <div class="skills-outer">
+    <div class="skill-block">
+      <div class="skill-block-label">Revenue Assurance</div>
+      <div class="skill-tags">
         <span class="skill-tag">Revenue Assurance</span>
         <span class="skill-tag">RAFM Controls</span>
         <span class="skill-tag">Billing Reconciliation</span>
         <span class="skill-tag">Interconnect Audit</span>
-        <span class="skill-tag">Telecom Billing</span>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Fraud Risk</div>
-        <span class="skill-tag">Fraud Investigation</span>
-        <span class="skill-tag">SIM Box Detection</span>
-        <span class="skill-tag">Mobile Money Risk</span>
-        <span class="skill-tag">AI Fraud Detection</span>
-        <span class="skill-tag">False Positive Reduction</span>
-      </div>
-      <div class="skill-group">
-        <div class="skill-group-title">Advisory</div>
-        <span class="skill-tag">Audit & Compliance</span>
-        <span class="skill-tag">Regulatory Advisory</span>
-        <span class="skill-tag">Stakeholder Leadership</span>
-        <span class="skill-tag">Platform Architecture</span>
-        <span class="skill-tag">Risk Strategy</span>
+        <span class="skill-tag">Roaming Assurance</span>
+        <span class="skill-tag">VAS Leakage</span>
+        <span class="skill-tag">GSM Voice RA</span>
       </div>
     </div>
 
-    <div style="margin-top:28px;">
-      <div class="section-label" style="margin-bottom:12px;">Platforms & Tools</div>
-      <div class="tools-list">
-        <span class="tool-chip">RAID (Mobileum)</span>
-        <span class="tool-chip">Subex ROC-FM</span>
-        <span class="tool-chip">Mavenir FM</span>
-        <span class="tool-chip">Amdocs</span>
-        <span class="tool-chip">Power BI</span>
-        <span class="tool-chip">CRM / BSS Systems</span>
+    <div class="skill-block">
+      <div class="skill-block-label">Fraud Management</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Telecom Fraud Detection</span>
+        <span class="skill-tag">SIM Box / Bypass</span>
+        <span class="skill-tag">Mobile Money Risk</span>
+        <span class="skill-tag">AI Fraud Detection</span>
+        <span class="skill-tag">False Positive Tuning</span>
+        <span class="skill-tag">AML / KYC</span>
+        <span class="skill-tag">Digital Payment Fraud</span>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <div class="skill-block-label">Strategy &amp; Advisory</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Regulatory Advisory</span>
+        <span class="skill-tag">Compliance Audit</span>
+        <span class="skill-tag">CXO / Board Reporting</span>
+        <span class="skill-tag">Platform Architecture</span>
+        <span class="skill-tag">Risk Governance</span>
+        <span class="skill-tag">Anti-Fraud Frameworks</span>
+        <span class="skill-tag">Multi-Country Delivery</span>
       </div>
     </div>
   </div>
-</section>
 
-<!-- EDUCATION -->
-<section>
-  <div class="container fade-in">
-    <div class="section-label">Qualifications</div>
-    <div class="section-title">Education</div>
-
-    <div class="edu-grid">
-      <div class="edu-card">
-        <div class="edu-degree">B.A. Economics</div>
-        <div class="edu-school">University of Rajasthan</div>
-      </div>
-      <div class="edu-card">
-        <div class="edu-degree">PGDBA</div>
-        <div class="edu-school">Symbiosis International University, Pune</div>
-      </div>
+  <div style="margin-top: 12px;">
+    <div class="skill-block" style="background: transparent; border-color: transparent; padding: 20px 0 0;">
+      <div class="skill-block-label" style="border-bottom:none; margin-bottom:12px;">Platforms &amp; Technologies</div>
+    </div>
+    <div class="platforms-row">
+      <span class="platform-pill">RAID (Mobileum)</span>
+      <span class="platform-pill">Subex ROC-FM / FMS</span>
+      <span class="platform-pill">Orpheus FMS</span>
+      <span class="platform-pill">Mavenir FM (MNSS)</span>
+      <span class="platform-pill">PayGuard</span>
+      <span class="platform-pill">SIGIL (AdaptiveMobile)</span>
+      <span class="platform-pill">Comviva (Mobile Money)</span>
+      <span class="platform-pill">Amdocs BSS/OSS</span>
+      <span class="platform-pill">BSCS / UPSS</span>
+      <span class="platform-pill">Power BI</span>
+      <span class="platform-pill">JIRA · Confluence</span>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<div class="contact-section fade-in">
-  <div class="section-label">Get In Touch</div>
-  <div class="section-title">Open to Consulting Opportunities</div>
-  <p class="contact-sub">Available for RAFM consulting engagements, regulatory advisory, and fraud risk programme delivery globally.</p>
-  <div class="contact-links">
-    <a href="https://www.linkedin.com/in/amit-singh0203" target="_blank" class="btn btn-primary">Connect on LinkedIn</a>
-    <a href="#" id="cv-download-btn-2" class="btn btn-outline" download>
-      Download CV
+<div class="contact-section reveal" id="contact">
+  <div class="section-tag" style="text-align:center; margin-bottom:12px;">// 05 — Let's Talk</div>
+  <h2 class="contact-title">Open to <em>Global</em><br>Consulting Engagements</h2>
+  <p class="contact-sub">Available for RAFM consulting, regulatory advisory, fraud risk programme delivery, and platform transformation globally.</p>
+
+  <div class="contact-actions">
+    <a href="https://www.linkedin.com/in/amit-singh0203" target="_blank" class="btn-gold">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0H5a5 5 0 00-5 5v14a5 5 0 005 5h14a5 5 0 005-5V5a5 5 0 00-5-5zm-11 19H5V8h3v11zM6.5 6.73a1.77 1.77 0 110-3.54 1.77 1.77 0 010 3.54zM20 19h-3v-5.6c0-3.37-4-3.11-4 0V19h-3V8h3v1.77C14.4 7.14 20 6.96 20 12.29V19z"/></svg>
+      Connect on LinkedIn
     </a>
+    <button class="btn-ghost" onclick="downloadCV()">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
+      Download CV
+    </button>
+    <a href="mailto:amit.singh0203@gmail.com" class="btn-ghost">
+      ✉ Email Directly
+    </a>
+  </div>
+
+  <div class="contact-detail">
+    <div class="contact-item">📞 <span>+91 9099980442</span></div>
+    <div class="contact-item">📍 <span>Bujumbura, Burundi</span></div>
+    <div class="contact-item">🌍 <span>Open to Global Roles</span></div>
   </div>
 </div>
 
 <footer>
-  © 2026 Amit Singh · RAFM & Fraud Risk Consulting · All rights reserved
+  © 2026 &nbsp;·&nbsp; AMIT SINGH &nbsp;·&nbsp; RAFM &amp; FRAUD RISK CONSULTING &nbsp;·&nbsp; BUILT FOR IMPACT
 </footer>
 
 <script>
-  // ── CV DOWNLOAD ──
-  // Replace the CV_URL below with your actual CV file URL
-  // e.g. a Google Drive direct download link, Dropbox, or GitHub raw file URL
-  // Example: https://drive.google.com/uc?export=download&id=YOUR_FILE_ID
-  const CV_URL = ''; // ← PASTE YOUR CV URL HERE
+  // ── CV DOWNLOAD via LinkedIn ──
+  // LinkedIn lets you download a profile as a PDF. This opens the LinkedIn profile
+  // where the user can click "More → Save to PDF" or "Download resume" if uploaded.
+  // To enable direct file download, upload your CV to LinkedIn and paste the link below.
+  
+  const CV_LINKEDIN_URL = 'https://www.linkedin.com/in/amit-singh0203';
+  // If you upload your CV as a media file to LinkedIn, you'll get a direct download URL.
+  // Replace the above with something like:
+  // 'https://media.licdn.com/dms/document/media/YOUR_FILE_ID/YOUR_FILE.pdf'
 
-  function handleCVDownload(e) {
-    e.preventDefault();
-    if (CV_URL && CV_URL !== '') {
+  function downloadCV() {
+    // Try to trigger direct download if a direct CV URL is available
+    const directCVUrl = ''; // ← Paste your direct CV file URL here (Google Drive, Dropbox, etc.)
+    
+    if (directCVUrl) {
       const a = document.createElement('a');
-      a.href = CV_URL;
+      a.href = directCVUrl;
       a.download = 'Amit_Singh_RAFM_CV.pdf';
       a.target = '_blank';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
     } else {
-      // Fallback: opens LinkedIn profile if no CV URL is set
-      alert('CV download link not yet configured. Please add your CV URL to the page or connect via LinkedIn.');
+      // Fallback: open LinkedIn profile to download
+      window.open(CV_LINKEDIN_URL, '_blank');
     }
   }
 
-  document.getElementById('cv-download-btn').addEventListener('click', handleCVDownload);
-  document.getElementById('cv-download-btn-2').addEventListener('click', handleCVDownload);
-
-  // ── SCROLL FADE-IN ──
+  // ── SCROLL REVEAL ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        e.target.classList.add('visible');
+        e.target.classList.add('shown');
         observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 </body>
